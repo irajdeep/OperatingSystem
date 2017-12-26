@@ -11,7 +11,15 @@ void *threadFunc(void *pArg) { /* thread main */
 	printf("Thread number %d\n", myNum);
 	return 0;
 }
-
+/*
+Here thread race condition may occur , i.e one thread while reading a 
+variable , other thread might be modifying it.
+So a probable output is
+Thread number 0
+Thread number 2
+Thread number 2
+Thread number 3
+*/
 int main(void) {
 	int i;
 	pthread_t tid[NUM_THREADS];
